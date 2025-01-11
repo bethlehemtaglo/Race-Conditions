@@ -7,24 +7,29 @@ import (
     . "fmt"
     "runtime"
     "time"
+    "sync"
 )
 
 var i = 0
+var mu sync.Mutex
 
 
 
 func incrementing() {
     //TODO: increment i 1000000 times
     for j:=0; j < 1000000; j++ {
+        mu.Lock()
         i++ 
+        mu.Unlock()
     }
 }
 
 func decrementing() {
     //TODO: decrement i 1000000 times
     for j:=0; j < 1000000; j++ {
+        mu.Lock()
         i--
-        
+        mu.Unlock()
     }
 }
 
@@ -45,4 +50,4 @@ func main() {
     // We will do it properly with channels soon. For now: Sleep.
     time.Sleep(500*time.Millisecond)
     Println("The magic number is:", i)
-}
+}               
