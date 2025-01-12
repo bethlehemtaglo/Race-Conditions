@@ -2,7 +2,7 @@
 //this was under shared variables 'go'
 
 package main
-
+//Task 3 in Go
 import (
     . "fmt"
     "runtime"
